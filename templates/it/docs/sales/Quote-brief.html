@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scheda per il preventivo · {{NAME}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;family=Inter:wght@400;500;600&display=swap">
+<script>
+try{var t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
+</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<button class="tema" type="button" aria-label="Cambia tema" title="Chiaro o scuro">
+<svg class="sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+<svg class="luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+</button>
+
+<!--
+  Modello della scheda. Ogni blocco segnato DA-SCRIVERE va sostituito col
+  contenuto del progetto; a lavoro finito nella pagina non deve restarne
+  nessuno. Le cifre non si scrivono a mano: le tabelle stanno fra i segnaposti
+  begin/end, e le cifre nel testo dentro elementi con data-est="…".
+  Le rigenera docs/estimate/estimate.py.
+-->
+
+<header class="wrap">
+  <p class="occhiello">{{NAME}} · DA-SCRIVERE: tipo di prodotto in poche parole</p>
+  <h1>Scheda per il preventivo</h1>
+  <p class="firma"><span class="data">{{DATE}}</span> · {{COMPANY}} · per l'area commerciale</p>
+  <p class="sommario">Tutto quello che serve per stilare l'offerta a {{CLIENT}}: cosa costruiamo, in che ordine, quanto lavoro richiede ogni voce, i costi ricorrenti, i tempi, il team e le condizioni di assistenza. Le voci seguono l'ordine chiesto dal cliente, così l'offerta si confronta riga per riga con le altre.</p>
+  <p class="stato"><b>Stima tecnica, non offerta.</b> Gli importi sono calcolati a una tariffa di <b data-est="rate">—</b> a giornata, IVA esclusa, sul team descritto nel §&nbsp;9. Eventuali sconti e il margine di rischio li decide il commerciale.</p>
+</header>
+
+<div class="wrap">
+
+<ol class="indice">
+  <li><a href="#sintesi">In breve</a></li>
+  <li><a href="#richiesta">Cosa chiede il cliente</a></li>
+  <li><a href="#soluzione">Come lo costruiamo</a></li>
+  <li><a href="#fasi">Cosa entra in ogni rilascio</a></li>
+  <li><a href="#voci">Il preventivo voce per voce</a></li>
+  <li><a href="#sviluppi">Sviluppi successivi</a></li>
+  <li><a href="#ricorrenti">Costi ricorrenti</a></li>
+  <li><a href="#tempi">Tempi di realizzazione</a></li>
+  <li><a href="#team">Il team</a></li>
+  <li><a href="#assistenza">Assistenza post-lancio</a></li>
+  <li><a href="#proprieta">Proprietà del progetto</a></li>
+  <li><a href="#aperti">Ipotesi, esclusioni e punti aperti</a></li>
+  <li><a href="#commerciale">Indicazioni per l'offerta</a></li>
+</ol>
+<!-- Se servono sezioni in più (infrastruttura esistente del cliente, bando di
+     finanza agevolata…), si aggiungono qui e nel corpo, prima di «Proprietà». -->
+
+<h2 id="sintesi">1 · In breve</h2>
+<p>DA-SCRIVERE: due paragrafi. Cos'è il prodotto e per chi, in parole da commerciale; poi come proponiamo di arrivarci (quanti rilasci, cosa c'è nel primo).</p>
+
+<!-- begin:figures -->
+<!-- end:figures -->
+<p class="nota">IVA esclusa, a <span data-est="rate">—</span> a giornata. Costi ricorrenti al lancio: <b>DA-SCRIVERE</b> di servizi terzi, più il pacchetto di assistenza scelto (§&nbsp;7 e §&nbsp;10).</p>
+
+<h2 id="richiesta">2 · Cosa chiede il cliente</h2>
+<p>La richiesta originale è in <a href="../client-sources/"><code>client-sources/</code></a>. In sintesi:</p>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:30%">Sezione</th><th>Cosa contiene</th></tr></thead>
+  <tbody>
+    <tr><td>DA-SCRIVERE</td><td>Una riga per ogni sezione o modulo della richiesta, con in grassetto le richieste che pesano di più o che sono insolite.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="soluzione">3 · Come lo costruiamo</h2>
+<p>DA-SCRIVERE: un paragrafo sulla scelta di fondo e perché costa meno e regge la crescita.</p>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:24%">Componente</th><th style="width:26%">Tecnologia</th><th>Perché</th></tr></thead>
+  <tbody>
+    <tr><td>DA-SCRIVERE</td><td></td><td>Una riga per componente (app, web, pannello, backend, database, servizi esterni, AI…), col perché in parole semplici.</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="nota">Il dettaglio è in <a href="../infrastructure/Infrastructure.html">Infrastruttura</a> e in <a href="../technical/architecture.md"><code>technical/architecture.md</code></a>.</p>
+
+<h2 id="fasi">4 · Cosa entra in ogni rilascio</h2>
+<p>DA-SCRIVERE: il criterio con cui si è diviso il lavoro (il primo rilascio deve già servire o incassare; cosa resta fuori e perché).</p>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:26%">Area</th><th style="width:37%">A</th><th>B</th></tr></thead>
+  <tbody>
+    <tr><td>DA-SCRIVERE</td><td></td><td>Per le aree assenti in A: <code>&lt;span class="st st-attesa"&gt;non nel primo rilascio&lt;/span&gt;</code>.</td></tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+
+<div class="wide">
+<h2 id="voci">5 · Il preventivo voce per voce</h2>
+<p class="nota">Giornate di lavoro per voce e importo a <span data-est="rate">—</span> a giornata, IVA esclusa. Le voci seguono l'elenco del cliente.</p>
+<!-- begin:items-table -->
+<!-- end:items-table -->
+</div>
+
+<div class="wrap">
+
+<h2 id="sviluppi">6 · Sviluppi successivi</h2>
+<p>Non sono nel preventivo. Li indichiamo perché il cliente li ha accennati o perché sono il passo naturale dopo il lancio.</p>
+<!-- begin:later-table -->
+<!-- end:later-table -->
+
+<h2 id="ricorrenti">7 · Costi ricorrenti</h2>
+<p>Servizi terzi, intestati e pagati direttamente dal cliente.</p>
+<p>DA-SCRIVERE: tabella dei servizi per scenario (Lancio, Crescita, Scala), con una riga di totale <code>tr.somma</code>; poi la tabella «Altri costi» (store, dominio, commissioni di pagamento, assistenza). Prendere i valori da <code>pricing.md</code> del generatore e tenere solo i servizi che il progetto usa davvero.</p>
+<p class="nota">Stime indicative su listini di {{MONTH}}, IVA esclusa.</p>
+
+<h2 id="tempi">8 · Tempi di realizzazione</h2>
+<p>DA-SCRIVERE: tabella Fase · Settimane dall'avvio · Durata, con righe <code>tr.sez</code> per ogni rilascio e una riga <code>tr.somma</code> alla fine di ciascuno. La capacità settimanale del team è in <code>pricing.md</code>.</p>
+<p class="nota">I tempi partono dalla firma e dalla consegna dei materiali. Dipendono dalle risposte del cliente su grafica e contenuti: lo diciamo nel contratto con un tempo massimo di risposta (cinque giorni lavorativi), oltre il quale le date si spostano.</p>
+
+<h2 id="team">9 · Il team</h2>
+<p>DA-SCRIVERE: tabella Figura · Cosa fa · Impegno, dalla sezione «Team» di <code>pricing.md</code> del generatore, adattata al progetto (chi fa cosa, chi è il riferimento per il cliente, chi entra solo in alcune fasi); poi una nota sul perché le giornate sono quelle.</p>
+
+<h2 id="assistenza">10 · Assistenza post-lancio</h2>
+<p>DA-SCRIVERE: garanzia, manutenzione ordinaria ed evolutiva; tabella dei pacchetti (ore al mese, canone, cosa comprende, tariffa fuori pacchetto con <span data-est="hourly">—</span> l'ora e <span data-est="rate">—</span> la giornata) e tabella dei tempi per gravità, tutto da <code>pricing.md</code>. Togliere le frasi sulle app se non ce ne sono.</p>
+
+<h2 id="proprieta">11 · Proprietà del progetto</h2>
+<ul>
+  <li><b>Al committente, al saldo di ogni fase</b>: codice sorgente, repository, database e schema, API, configurazioni, documentazione, materiali grafici.</li>
+  <li><b>Account intestati al committente fin dall'inizio</b>: dominio, hosting, database, servizi terzi (e, se ci sono app, Apple Developer e Google Play). Li apre il cliente — con la nostra guida — e ci invita come amministratori. Può revocarci in qualunque momento senza perdere nulla.</li>
+  <li><b>Librerie e servizi di terzi</b> restano soggetti alla loro licenza: li elenchiamo in un allegato, con licenza e costo, così è chiaro cosa si cede e cosa no.</li>
+  <li><b>Uscita libera</b>: a fine rapporto consegniamo accessi, documentazione di deploy e ripristino, e un passaggio di consegne di una giornata a chi subentra.</li>
+</ul>
+
+<h2 id="aperti">12 · Ipotesi, esclusioni e punti aperti</h2>
+<h3>Da chiarire all'incontro</h3>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:30%">Punto</th><th>Perché conta</th></tr></thead>
+  <tbody>
+    <tr><td>DA-SCRIVERE</td><td>Ogni richiesta ambigua, ogni scelta che cambia la stima (con quante giornate), ogni vincolo esterno (store, leggi, licenze dei dati) che il cliente potrebbe non conoscere.</td></tr>
+  </tbody>
+</table>
+</div>
+<h3>Non compreso</h3>
+<ul>
+  <li>Costi dei servizi terzi (§&nbsp;7), account e licenze: intestati e pagati dal cliente.</li>
+  <li>Inserimento dei contenuti, fotografie, testi, traduzioni oltre l'interfaccia.</li>
+  <li>Consulenza legale: informativa privacy, condizioni d'uso e contratti li redige il legale del cliente; noi forniamo le informazioni tecniche.</li>
+  <li>Marketing, campagne, acquisizione utenti.</li>
+  <li>Logo e identità di marca, se non esistono già.</li>
+  <!-- DA-SCRIVERE: esclusioni specifiche del progetto, oppure togliere questo commento. -->
+</ul>
+
+<h2 id="commerciale">13 · Indicazioni per l'offerta</h2>
+<ul>
+  <li><b>Tariffa</b>: <span data-est="rate">—</span> a giornata. Se si cambia, si cambia in <code>estimate/estimate.py</code> e si rigenera questo documento.</li>
+  <li><b>Margine di rischio</b>: la stima non ne contiene. Con giornate già strette, è prudente un <b>10–15%</b>, di più se ci sono punti aperti di peso.</li>
+  <li><b>Un contratto per rilascio</b>, o uno con fasi: il primo si firma subito, il successivo si conferma dopo il lancio, alle stesse tariffe.</li>
+  <li><b>Tranche suggerite</b>: DA-SCRIVERE, dalla sezione «Pagamenti» di <code>pricing.md</code>.</li>
+  <!-- DA-SCRIVERE: indicazioni specifiche (congruità per un bando, valutazioni a prezzo fisso da offrire per prime, ecc.), oppure togliere questo commento. -->
+</ul>
+
+</div>
+
+<footer class="wrap">
+  <p>{{COMPANY}} · documento interno di stima per {{CLIENT}}, {{DATE}}. Gli importi sono generati da <code>docs/estimate/estimate.py</code>: non correggerli a mano qui dentro.</p>
+</footer>
+<script src="../assets/theme.js"></script>
+</body>
+</html>

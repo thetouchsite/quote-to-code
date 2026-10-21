@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Riverside Yoga documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;family=Inter:wght@400;500;600&display=swap">
+<script>
+try{var t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
+</script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<button class="tema" type="button" aria-label="Switch theme" title="Light or dark">
+<svg class="sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+<svg class="luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+</button>
+
+<header class="wide">
+  <p class="occhiello">Riverside Yoga</p>
+  <h1>Documentation</h1>
+  <p class="firma"><span class="data">7 September 2026</span> · Example Studio · internal</p>
+  <p class="sommario">Riverside Yoga asks for a mobile-first website where members book classes, cancel with a 12-hour rule and buy class packs online, with an instructor view and a front-desk admin. Here are the estimate, the technical plan and the original request.</p>
+  <p class="stato"><b>Confidential.</b> The repository stays private and the documents go only to people working on the offer.</p>
+</header>
+
+<div class="wide">
+<h2>For the offer</h2>
+<div class="griglia">
+  <a class="doc" href="sales/Quote-brief.html">
+    <span class="nome">Quote brief</span>
+    <span class="detto">Items and days in the client's order, releases, later development, recurring costs, timeline, team, support, open points.</span>
+    <span class="meta">for sales · also as PDF</span>
+  </a>
+  <a class="doc" href="sales/Quote-brief.pdf">
+    <span class="nome">Brief as PDF</span>
+    <span class="detto">The same brief, ready to send. Regenerate with <code>python tools/make_pdf.py</code>.</span>
+    <span class="meta">A4 · to print or attach</span>
+  </a>
+  <a class="doc" href="infrastructure/Infrastructure.html">
+    <span class="nome">Infrastructure</span>
+    <span class="detto">Where the system runs, how it grows, security and GDPR, backups, the accounts the client must open.</span>
+    <span class="meta">proposal</span>
+  </a>
+</div>
+
+<h2>Technical</h2>
+<div class="griglia">
+  <a class="doc" href="technical/architecture.md"><span class="nome">Architecture</span><span class="detto">Components, code layout, modules with days, key flows.</span></a>
+  <a class="doc" href="technical/bookings-and-credits.md"><span class="nome">Bookings and credits</span><span class="detto">The credits ledger, booking and cancellation rules, waiting list, the tests that must exist.</span><span class="meta">the hard part</span></a>
+  <a class="doc" href="technical/data-model.md"><span class="nome">Data model</span><span class="detto">Tables, sessions generated from weekly series, access rules per role.</span></a>
+  <a class="doc" href="technical/gdpr-and-security.md"><span class="nome">GDPR and security</span><span class="detto">Data processed, sub-processors, retention, health data, security measures.</span></a>
+  <a class="doc" href="technical/adr/"><span class="nome">Decisions (ADR)</span><span class="detto">Web app instead of native app; Stripe for money, our ledger for credits.</span><span class="meta">2 decisions</span></a>
+</div>
+
+<h2>Sources</h2>
+<div class="griglia">
+  <a class="doc" href="client-sources/"><span class="nome">The client's request</span><span class="detto">The original text.</span></a>
+  <a class="doc" href="estimate/estimate.py"><span class="nome">The estimate script</span><span class="detto">The single source of days and amounts. Change it here, regenerate the brief.</span></a>
+</div>
+</div>
+
+<footer class="wide">
+  <p>Example Studio · Riverside Yoga.</p>
+</footer>
+<script src="assets/theme.js"></script>
+</body>
+</html>

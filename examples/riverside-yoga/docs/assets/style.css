@@ -1,0 +1,219 @@
+/* Shared stylesheet for generated documents.
+   Same colours and classes in every document. */
+:root{
+  color-scheme:light;
+  --bg:#fff; --carta:#faf9f7;
+  --ink:#1c1b19; --ink-2:#37352f; --muted:#6b6862; --faint:#9b978f;
+  --line:#e8e6e1; --line-2:#d5d2cb;
+  --accent:#a8421f; --ok:#2c6a4a; --attesa:#8a6212; --no:#a3352c; --ia:#5b4bb8;
+  --accent-velo:#fbf4f1; --accent-filo:#e3c4b8;
+  --ok-velo:#f1f7f4;     --ok-filo:#d8e8e0;
+  --attesa-velo:#fbf5e8; --attesa-filo:#ecd9ad;
+  --no-velo:#fbf1f0;     --no-filo:#edc9c5;
+  --vetro:rgba(255,255,255,.92);
+  --serif:"Source Serif 4",ui-serif,Georgia,"Times New Roman",serif;
+  --sans:Inter,ui-sans-serif,-apple-system,"Segoe UI",system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Consolas,monospace;
+}
+/* ── Dark theme redefines colours only: everything else is already
+      written in variables, so there is no second rule to keep
+      in sync. Two blocks because the system setting and the toggle must
+      be able to override each other both ways. ── */
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#171614; --carta:#201f1c;
+  --ink:#eceae5; --ink-2:#cfccc5; --muted:#a09c94; --faint:#7b776f;
+  --line:#2e2c29; --line-2:#413e3a;
+  --accent:#e08a63; --ok:#6cc39a; --attesa:#dcae5c; --no:#e08b83; --ia:#a79cf7;
+  --accent-velo:#2b201b; --accent-filo:#4a3529;
+  --ok-velo:#17281f;     --ok-filo:#2c4437;
+  --attesa-velo:#2a2316; --attesa-filo:#4a3d21;
+  --no-velo:#2b1b19;     --no-filo:#4a2e2a;
+  --vetro:rgba(23,22,20,.92);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#171614; --carta:#201f1c;
+  --ink:#eceae5; --ink-2:#cfccc5; --muted:#a09c94; --faint:#7b776f;
+  --line:#2e2c29; --line-2:#413e3a;
+  --accent:#e08a63; --ok:#6cc39a; --attesa:#dcae5c; --no:#e08b83; --ia:#a79cf7;
+  --accent-velo:#2b201b; --accent-filo:#4a3529;
+  --ok-velo:#17281f;     --ok-filo:#2c4437;
+  --attesa-velo:#2a2316; --attesa-filo:#4a3d21;
+  --no-velo:#2b1b19;     --no-filo:#4a2e2a;
+  --vetro:rgba(23,22,20,.92);
+}
+
+/* ── Theme toggle ── */
+.tema{position:fixed;top:16px;right:16px;z-index:60;width:38px;height:38px;
+  border:1px solid var(--line);border-radius:999px;background:var(--vetro);
+  backdrop-filter:blur(10px);color:var(--muted);cursor:pointer;
+  display:grid;place-items:center;padding:0}
+.tema:hover{color:var(--ink-2);border-color:var(--line-2)}
+.tema svg{width:17px;height:17px}
+.tema .luna{display:none}
+:root[data-theme="dark"] .tema .sole,
+:root[data-theme="dark"] .tema .luna{display:none}
+:root[data-theme="dark"] .tema .luna{display:block}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .tema .sole{display:none}
+  :root:not([data-theme="light"]) .tema .luna{display:block}
+}
+@media print{.tema{display:none}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--serif);font-size:18px;line-height:1.72;
+  padding:0 24px 104px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.wide{max-width:940px;margin:0 auto}
+
+h1{font-size:38px;line-height:1.14;letter-spacing:-.012em;font-weight:600;margin:0}
+h2{font-size:26px;line-height:1.26;letter-spacing:-.008em;font-weight:600;margin:56px 0 16px}
+h3{font-size:20px;line-height:1.35;font-weight:600;margin:32px 0 8px}
+p{margin:0 0 18px;color:var(--ink-2)}
+p:last-child{margin-bottom:0}
+a{color:var(--ink);text-decoration-color:var(--line-2);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--accent)}
+strong,b{font-weight:600;color:var(--ink)}
+i,em{font-style:italic}
+code{font-family:var(--mono);font-size:.82em;background:var(--carta);
+  border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--ink-2)}
+hr{border:0;border-top:1px solid var(--line);margin:56px 0}
+
+/* ── Document header ── */
+header{padding:84px 0 0}
+.kicker,.occhiello{font-family:var(--sans);font-size:13px;font-weight:500;
+  letter-spacing:.02em;color:var(--muted);margin:0 0 16px}
+.firma{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0 0;
+  font-family:var(--sans);font-size:13.5px;color:var(--muted)}
+.firma .data{display:inline-flex;align-items:center;gap:7px;padding:4px 12px 4px 10px;
+  border:1px solid var(--line);border-radius:999px;background:var(--carta);
+  color:var(--ink-2);font-weight:500}
+.firma .data::before{content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--ok);flex:0 0 auto}
+.sub,.sommario{font-size:20px;line-height:1.6;color:var(--ink-2);margin:22px 0 0;max-width:64ch}
+h2 + .sub, h3 + .sub{font-size:18px;line-height:1.65;margin:0 0 18px}
+.stato{margin:36px 0 0;padding:20px 0 0;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:14px;line-height:1.62;color:var(--muted)}
+.stato b{color:var(--ink-2);font-weight:600}
+
+ul,ol{margin:0 0 18px;padding-left:24px;color:var(--ink-2)}
+li{margin:9px 0}
+li::marker{color:var(--faint)}
+section{margin:0}
+
+/* ── Tables: sans, thin border, lightly tinted header row.
+      On wide screens they overflow, so the text column stays narrow. ── */
+.scroller,.tabella,.scorri{
+  overflow-x:auto;margin:26px 0 0;
+  border:1px solid var(--line);border-radius:10px;background:var(--bg);
+}
+@media(min-width:1040px){
+  .wrap .scroller,.wrap .tabella,.wrap .scorri,.wrap .schema.wide{width:900px;margin-left:-90px}
+}
+table{width:100%;border-collapse:collapse;font-family:var(--sans);
+  font-size:14.5px;line-height:1.55}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12.5px;font-weight:600;letter-spacing:.01em;color:var(--muted);
+  background:var(--carta);border-bottom:1px solid var(--line-2);white-space:nowrap}
+thead th:first-child{border-top-left-radius:9px}
+thead th:last-child{border-top-right-radius:9px}
+tbody tr:last-child td{border-bottom:0}
+td:first-child,td.primo{font-weight:600;color:var(--ink)}
+td small{display:block;font-size:13px;font-weight:400;color:var(--muted);margin-top:3px}
+td.n,th.n,.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.somma td{background:var(--carta);border-top:1px solid var(--line-2);
+  font-weight:600;color:var(--ink)}
+.n{font-variant-numeric:tabular-nums}
+.fonte{font-family:var(--mono);font-size:12.5px;color:var(--muted);white-space:nowrap}
+
+/* ── Status labels: words, not pills ── */
+.tag,.st{font-family:var(--sans);font-size:13px;font-weight:600;
+  white-space:nowrap;color:var(--muted)}
+.t-log,.t-si,.st-ok{color:var(--ok)}
+.t-ia{color:var(--ia)}
+.t-no,.st-no{color:var(--no)}
+.t-dopo,.t-fuori,.st-attesa{color:var(--attesa)}
+.t-dentro{color:var(--muted)}
+
+/* ── Callouts: lightly tinted background and a thin accent line on the left ── */
+.tesi,.rilievo,.dom{margin:26px 0 0;padding:18px 22px;background:var(--carta);
+  border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px}
+.tesi p,.rilievo p,.dom p{color:var(--ink-2)}
+.tesi p:last-child,.rilievo p:last-child,.dom p:last-child{margin-bottom:0}
+.dom b{color:var(--ink)}
+.card{margin:26px 0 0;padding:0}
+.card + .card{margin-top:30px}
+.due{margin:24px 0 0}
+.nota,.fnota,.didascalia{font-family:var(--sans);font-size:14px;color:var(--muted);
+  margin:16px 0 0;line-height:1.62;max-width:70ch}
+
+footer{margin-top:72px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:13.5px;line-height:1.62;color:var(--muted);max-width:72ch}
+footer p{color:var(--muted)}
+
+@media (max-width:640px){
+  body{font-size:17px;padding:0 20px 80px}
+  header{padding-top:56px}
+  h1{font-size:30px}
+  h2{font-size:23px;margin-top:44px}
+  th,td{padding:11px 13px}
+}
+@media print{body{padding:0}h2{break-after:avoid}table,.tabella{break-inside:avoid}}
+
+.schema{margin:28px 0 0;overflow-x:auto}
+.schema svg{display:block;width:100%;min-width:780px;height:auto}
+.zona{fill:none;stroke:var(--line-2);stroke-width:1;stroke-dasharray:5 5}
+.riq{fill:var(--bg);stroke:var(--line-2);stroke-width:1.1}
+.riq-p{fill:var(--accent-velo);stroke:var(--accent);stroke-width:1.1}
+.riq-d{fill:var(--ok-velo);stroke:var(--ok);stroke-width:1.1}
+.riq-b{fill:var(--attesa-velo);stroke:var(--attesa);stroke-width:1.1}
+.tl{font-size:14px;font-weight:600;fill:var(--ink)}
+.ts{font-size:12px;fill:var(--muted)}
+.tm{font-size:11px;fill:var(--faint);letter-spacing:.08em;text-transform:uppercase}
+.fr{stroke:var(--line-2);stroke-width:1.4;fill:none}
+.fr-b{stroke:var(--attesa);stroke-width:1.6;fill:none}
+
+/* ── Additions ── */
+.tre{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:24px 0 0}
+.cifra{border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:var(--bg)}
+.cifra .et{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--muted);letter-spacing:.01em}
+.cifra .val{font-family:var(--sans);font-size:26px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;margin:4px 0 2px}
+.cifra .dett{font-family:var(--sans);font-size:13px;color:var(--muted)}
+tr.sez td{background:var(--carta);font-family:var(--sans);font-size:12px;font-weight:600;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:9px 16px}
+.indice{font-family:var(--sans);font-size:14.5px;columns:2;column-gap:32px;margin:22px 0 0;padding-left:20px}
+.indice li{margin:5px 0;break-inside:avoid}
+.stampa-solo{display:none}
+@page{size:A4;margin:16mm 14mm 18mm}
+@media print{
+  :root{color-scheme:light}
+  body{font-size:11pt;line-height:1.5}
+  header{padding-top:0}
+  h1{font-size:24pt}
+  h2{font-size:15pt;margin:22pt 0 8pt}
+  h3{font-size:12pt;margin:14pt 0 4pt}
+  .sommario{font-size:12.5pt}
+  table{font-size:8.6pt}
+  th,td{padding:5pt 7pt}
+  .wrap .scroller,.wrap .tabella,.wrap .scorri,.wrap .schema.wide{width:auto;margin-left:0}
+  table,.tabella,.scroller,.scorri{break-inside:auto}
+  thead{display:table-header-group}
+  td small{font-size:7.8pt;margin-top:1pt}
+  th small{font-size:7pt}
+  .tabella{border-radius:0}
+  tr{break-inside:avoid}
+  .wrap,.wide{max-width:none}
+  .stampa-solo{display:block}
+  .schermo-solo{display:none}
+  a{text-decoration:none}
+  .indice{font-size:10pt}
+  .cifra .val{font-size:16pt}
+  .tre,.cifra{break-inside:avoid}
+  .schema{overflow:visible}
+  .schema svg{min-width:0}
+}
+th small{display:block;font-size:11px;font-weight:400;color:var(--faint);margin-top:1px}

@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quote brief · Riverside Yoga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;family=Inter:wght@400;500;600&display=swap">
+<script>
+try{var t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
+</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<button class="tema" type="button" aria-label="Switch theme" title="Light or dark">
+<svg class="sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+<svg class="luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+</button>
+
+<header class="wrap">
+  <p class="occhiello">Riverside Yoga · Booking and payments website</p>
+  <h1>Quote brief</h1>
+  <p class="firma"><span class="data">7 September 2026</span> · Example Studio · for the sales team</p>
+  <p class="sommario">Everything needed to write the offer to Riverside Yoga: what we build, in which order, how much work each item takes, recurring costs, timeline, team and support terms. Items follow the order of the client's request, so the offer can be compared line by line with the others.</p>
+  <p class="stato"><b>Technical estimate, not an offer.</b> Amounts are computed at a rate of <b data-est="rate">€400</b> per day, net of VAT, for the team described in §&nbsp;9. Discounts and risk margin are decided by sales.</p>
+</header>
+
+<div class="wrap">
+
+<ol class="indice">
+  <li><a href="#summary">In short</a></li>
+  <li><a href="#request">What the client asks</a></li>
+  <li><a href="#solution">How we build it</a></li>
+  <li><a href="#releases">What goes into each release</a></li>
+  <li><a href="#items">The estimate item by item</a></li>
+  <li><a href="#later">Later development</a></li>
+  <li><a href="#recurring">Recurring costs</a></li>
+  <li><a href="#timeline">Timeline</a></li>
+  <li><a href="#team">The team</a></li>
+  <li><a href="#support">Support after launch</a></li>
+  <li><a href="#ownership">Ownership</a></li>
+  <li><a href="#open">Assumptions, exclusions, open points</a></li>
+  <li><a href="#sales">Notes for the offer</a></li>
+</ol>
+
+<h2 id="summary">1 · In short</h2>
+<p>Riverside Yoga wants to stop running bookings on WhatsApp and class packs on a spreadsheet. Members will see the weekly schedule, book and cancel from their phone, and pay online for drop-ins and class packs; instructors tick attendance; the front desk manages timetable, members, credits and refunds. The <b>late-cancellation rule</b> (free up to 12 hours before, then the credit is lost) is what stops the money lost on no-shows.</p>
+<p>We propose <b>two releases</b>. <b>Launch</b>, in about six weeks, puts schedule, bookings and class packs online before the January rush, and fits the client's budget on its own. <b>Memberships</b>, three weeks later, adds monthly subscriptions, the automatic waiting list and the reports.</p>
+
+<!-- begin:figures -->
+<div class="tre">
+  <div class="cifra"><div class="et">A · Launch</div><div class="val">€27,200</div><div class="dett">68 days · about 6 weeks</div></div>
+  <div class="cifra"><div class="et">B · Memberships</div><div class="val">€12,400</div><div class="dett">31 days · 3 more weeks</div></div>
+  <div class="cifra"><div class="et">A + B · Total</div><div class="val">€39,600</div><div class="dett">99 days · about 9 weeks of work</div></div>
+</div>
+<!-- end:figures -->
+<p class="nota">Net of VAT, at <span data-est="rate">€400</span> per day. Recurring costs at launch: <b>about €50–100 per month</b> of third-party services, plus Stripe fees on what is sold and the support package chosen (§&nbsp;7 and §&nbsp;10).</p>
+
+<h2 id="request">2 · What the client asks</h2>
+<p>The original request is in <a href="../client-sources/"><code>client-sources/</code></a>. In short:</p>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:30%">Section</th><th>What it contains</th></tr></thead>
+  <tbody>
+    <tr><td>1 · Schedule</td><td>Weekly timetable with class type, level, instructor, room and <b>spots left</b>.</td></tr>
+    <tr><td>2 · Booking</td><td>Account, book and cancel; <b>free cancellation up to 12 hours before</b>, later the credit is lost.</td></tr>
+    <tr><td>3 · Payments</td><td>Drop-ins and packs of 5 or 10 by card; <b>later, a monthly unlimited membership</b>.</td></tr>
+    <tr><td>4 · Waiting list</td><td>Join a full class and <b>get the spot automatically</b> when someone cancels.</td></tr>
+    <tr><td>5 · Instructors</td><td>Their classes and attendance check-in from the phone.</td></tr>
+    <tr><td>6 · Front desk</td><td>Timetable (mostly weekly repeats), instructors, members, credits, refunds; attendance and revenue per month.</td></tr>
+    <tr><td>7 · Emails</td><td>Confirmation and a reminder the day before.</td></tr>
+    <tr><td>Mobile</td><td>Must work well on phones; <b>a native app could come later</b>.</td></tr>
+    <tr><td>Timing and budget</td><td>Booking and payments live <b>before the January rush</b>; about €20,000–30,000 for the first version.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="solution">3 · How we build it</h2>
+<p>One mobile-first web application, one managed database in Europe, and Stripe for every payment. No app store, no server to run: members book from the phone's browser, and the studio pays a few tens of euros a month to keep it online. The booking rules — capacity, the 12-hour window, credits — are enforced in the database, so two people can never take the last spot.</p>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:24%">Component</th><th style="width:26%">Technology</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td>Website, member area, instructor view, admin</td><td>Next.js on Vercel, EU functions</td><td>One codebase for every role. Public pages are indexable: «yoga classes near me» is how new members arrive.</td></tr>
+    <tr><td>Database, sign-in, files</td><td>Supabase: PostgreSQL, auth, storage, EU region</td><td>Bookings and credits change in one transaction; row-level rules let members see only their own data.</td></tr>
+    <tr><td>Payments</td><td>Stripe Checkout and Billing</td><td>Cards, Apple Pay and Google Pay, receipts, refunds and, in the second release, subscriptions with a customer portal.</td></tr>
+    <tr><td>Emails</td><td>Transactional email service</td><td>Confirmations and reminders that actually arrive, from the studio's own domain.</td></tr>
+    <tr><td>Scheduled jobs</td><td>Database cron and functions</td><td>Reminders the day before, credit expiry, waiting-list promotion.</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="nota">Details in <a href="../infrastructure/Infrastructure.html">Infrastructure</a>, <a href="../technical/architecture.md"><code>technical/architecture.md</code></a> and <a href="../technical/bookings-and-credits.md"><code>technical/bookings-and-credits.md</code></a>.</p>
+
+<h2 id="releases">4 · What goes into each release</h2>
+<p>Launch must already <b>earn money and stop the no-shows</b>: schedule, booking with the cancellation rule and class packs are all in it. Memberships and the automatic waiting list come second: they matter, but the studio can run January without them, and they are the most delicate parts to get right.</p>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:26%">Area</th><th style="width:37%">A · Launch</th><th>B · Memberships</th></tr></thead>
+  <tbody>
+    <tr><td>1 · Schedule</td><td>Weekly timetable, class and instructor pages, spots left</td><td>—</td></tr>
+    <tr><td>2 · Booking</td><td>Accounts, book, cancel, 12-hour rule, no-shows</td><td>Booking for a friend with one's own credits</td></tr>
+    <tr><td>3 · Payments</td><td>Drop-ins, packs of 5 and 10, expiry, refunds</td><td>Monthly unlimited membership, pause, cancellation</td></tr>
+    <tr><td>4 · Waiting list</td><td><span class="st st-attesa">not in the first release</span></td><td>Join, automatic promotion, email to the promoted member</td></tr>
+    <tr><td>5 · Instructors</td><td>Their classes, attendees, check-in</td><td>Substitutions between instructors</td></tr>
+    <tr><td>6 · Front desk</td><td>Timetable, rooms, members, manual credits, refunds</td><td>Attendance and revenue reports, CSV export</td></tr>
+    <tr><td>7 · Emails</td><td>Confirmation, reminder, cancellation, receipt</td><td>Membership renewal and failed-payment emails</td></tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+
+<div class="wide">
+<h2 id="items">5 · The estimate item by item</h2>
+<p class="nota">Working days per item and amount at <span data-est="rate">€400</span> per day, net of VAT. Items follow the client's list.</p>
+<!-- begin:items-table -->
+<div class="tabella">
+<table>
+  <thead><tr><th>Item</th><th class="num">Launch<small>days</small></th><th class="num">A · Launch</th><th class="num">Memb.<small>days</small></th><th class="num">B · Memberships</th><th class="num">A + B</th></tr></thead>
+  <tbody>
+    <tr class="sez"><td colspan="6">Design</td></tr>
+    <tr><td>Analysis and design<small>Kick-off workshop, booking and cancellation rules, credits model, architecture, release plan</small></td><td class="num">5</td><td class="num">€2,000</td><td class="num">1</td><td class="num">€400</td><td class="num">€2,400</td></tr>
+    <tr><td>UX/UI<small>Mobile-first flows for members, instructors and front desk, design system, clickable prototype</small></td><td class="num">8</td><td class="num">€3,200</td><td class="num">2</td><td class="num">€800</td><td class="num">€4,000</td></tr>
+    <tr class="sez"><td colspan="6">1 · Schedule</td></tr>
+    <tr><td>Website and weekly schedule<small>Next.js pages for classes, instructors and prices, indexable by search engines; live spots left</small></td><td class="num">6</td><td class="num">€2,400</td><td class="num">—</td><td class="num">—</td><td class="num">€2,400</td></tr>
+    <tr class="sez"><td colspan="6">2 · Booking</td></tr>
+    <tr><td>Accounts and member area<small>Sign-in by email link, profile, bookings and credits history, consents</small></td><td class="num">3</td><td class="num">€1,200</td><td class="num">1</td><td class="num">€400</td><td class="num">€1,600</td></tr>
+    <tr><td>Booking and cancellation rules<small>Book, cancel free up to 12 hours before, late cancellations and no-shows consume the credit</small></td><td class="num">6</td><td class="num">€2,400</td><td class="num">1</td><td class="num">€400</td><td class="num">€2,800</td></tr>
+    <tr class="sez"><td colspan="6">3 · Payments</td></tr>
+    <tr><td>Drop-ins and class packs<small>Stripe Checkout for 1, 5 and 10 classes, credits ledger with expiry, receipts, refunds</small></td><td class="num">7</td><td class="num">€2,800</td><td class="num">—</td><td class="num">—</td><td class="num">€2,800</td></tr>
+    <tr><td>Monthly memberships<small>Stripe subscriptions for unlimited classes, renewals, pause, cancellation, customer portal</small></td><td class="num">—</td><td class="num">—</td><td class="num">6</td><td class="num">€2,400</td><td class="num">€2,400</td></tr>
+    <tr class="sez"><td colspan="6">4 · Waiting list</td></tr>
+    <tr><td>Waiting list with automatic promotion<small>Join a full class, first in line gets the freed spot and an email, rules near the start time</small></td><td class="num">—</td><td class="num">—</td><td class="num">3</td><td class="num">€1,200</td><td class="num">€1,200</td></tr>
+    <tr class="sez"><td colspan="6">5 · Instructors</td></tr>
+    <tr><td>Instructor view<small>Their classes on the phone, attendee list, attendance check-in</small></td><td class="num">3</td><td class="num">€1,200</td><td class="num">1</td><td class="num">€400</td><td class="num">€1,600</td></tr>
+    <tr class="sez"><td colspan="6">6 · Front desk</td></tr>
+    <tr><td>Admin panel<small>Recurring timetable, rooms, instructors, members, manual credits, refunds, cancellations</small></td><td class="num">7</td><td class="num">€2,800</td><td class="num">3</td><td class="num">€1,200</td><td class="num">€4,000</td></tr>
+    <tr><td>Attendance and revenue reports<small>Monthly attendance per class and instructor, revenue by product, CSV export</small></td><td class="num">—</td><td class="num">—</td><td class="num">3</td><td class="num">€1,200</td><td class="num">€1,200</td></tr>
+    <tr class="sez"><td colspan="6">7 · Emails</td></tr>
+    <tr><td>Confirmations and reminders<small>Booking confirmation, reminder the day before, cancellation and payment emails</small></td><td class="num">3</td><td class="num">€1,200</td><td class="num">1</td><td class="num">€400</td><td class="num">€1,600</td></tr>
+    <tr class="sez"><td colspan="6">Platform</td></tr>
+    <tr><td>Database and access rules<small>PostgreSQL schema, row-level rules per role, migrations, capacity checks in the database</small></td><td class="num">4</td><td class="num">€1,600</td><td class="num">1</td><td class="num">€400</td><td class="num">€2,000</td></tr>
+    <tr><td>Backend functions and webhooks<small>Booking transactions, Stripe webhooks, scheduled reminders and expiry jobs</small></td><td class="num">4</td><td class="num">€1,600</td><td class="num">2</td><td class="num">€800</td><td class="num">€2,400</td></tr>
+    <tr class="sez"><td colspan="6">Quality and release</td></tr>
+    <tr><td>Security<small>Authentication, roles, rate limits, OWASP review, tested backup and restore</small></td><td class="num">2</td><td class="num">€800</td><td class="num">1</td><td class="num">€400</td><td class="num">€1,200</td></tr>
+    <tr><td>GDPR<small>Consents, privacy notice in the flows, data export and deletion, retention</small></td><td class="num">2</td><td class="num">€800</td><td class="num">—</td><td class="num">—</td><td class="num">€800</td></tr>
+    <tr><td>Testing<small>Automated tests on booking rules and payments, acceptance testing with the front desk</small></td><td class="num">3</td><td class="num">€1,200</td><td class="num">2</td><td class="num">€800</td><td class="num">€2,000</td></tr>
+    <tr><td>Technical documentation<small>Architecture, deployment, backup and restore, front-desk manual</small></td><td class="num">1</td><td class="num">€400</td><td class="num">1</td><td class="num">€400</td><td class="num">€800</td></tr>
+    <tr><td>Training<small>Sessions for front desk and instructors</small></td><td class="num">1</td><td class="num">€400</td><td class="num">1</td><td class="num">€400</td><td class="num">€800</td></tr>
+    <tr><td>Project management<small>Weekly check-in, demos every Friday, releases</small></td><td class="num">3</td><td class="num">€1,200</td><td class="num">1</td><td class="num">€400</td><td class="num">€1,600</td></tr>
+    <tr><td>Warranty<small>Three months after each release, included; then monthly support packages</small></td><td class="num" colspan="2">included</td><td class="num" colspan="2">included</td><td class="num">—</td></tr>
+    <tr class="somma"><td>Total</td><td class="num">68</td><td class="num">€27,200</td><td class="num">31</td><td class="num">€12,400</td><td class="num">€39,600</td></tr>
+  </tbody>
+</table>
+</div>
+<!-- end:items-table -->
+</div>
+
+<div class="wrap">
+
+<h2 id="later">6 · Later development</h2>
+<p>Not in the estimate. We list them because the client mentioned them (the app) or because they are the natural next step for a studio.</p>
+<!-- begin:later-table -->
+<div class="tabella">
+<table>
+  <thead><tr><th>Later development</th><th class="num" style="width:14%">Days</th><th class="num" style="width:28%">Indicative amount</th></tr></thead>
+  <tbody>
+    <tr><td>Native app for iOS and Android<small>Same booking and payments in an app, push reminders, store publication</small></td><td class="num">25–35</td><td class="num">€10,000 – €14,000</td></tr>
+    <tr><td>Gift cards and promo codes<small>Gift vouchers bought online, discount codes for campaigns</small></td><td class="num">3–5</td><td class="num">€1,200 – €2,000</td></tr>
+    <tr><td>Workshops and retreats<small>Special events with their own price, deposit and capacity</small></td><td class="num">4–6</td><td class="num">€1,600 – €2,400</td></tr>
+    <tr><td>Instructor payroll report<small>Classes taught and attendance per instructor, ready for monthly pay</small></td><td class="num">2–3</td><td class="num">€800 – €1,200</td></tr>
+    <tr><td>Second studio<small>A second location with its own rooms, timetable and reports</small></td><td class="num">4–7</td><td class="num">€1,600 – €2,800</td></tr>
+  </tbody>
+</table>
+</div>
+<!-- end:later-table -->
+
+<h2 id="recurring">7 · Recurring costs</h2>
+<p>Third-party services, in the studio's name and paid by the studio. They depend mostly on the number of members.</p>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:34%">Service</th><th class="num">Launch<small>~350 members</small></th><th class="num">Growth<small>~1,000</small></th><th class="num">Scale<small>3 studios, ~3,000</small></th></tr></thead>
+  <tbody>
+    <tr><td>Supabase: database, sign-in, storage</td><td class="num">€25</td><td class="num">€25–110</td><td class="num">€110–200</td></tr>
+    <tr><td>Hosting (Vercel)</td><td class="num">€20</td><td class="num">€20–40</td><td class="num">€40–80</td></tr>
+    <tr><td>Transactional email</td><td class="num">€0–20</td><td class="num">€20–35</td><td class="num">€35–90</td></tr>
+    <tr><td>Error monitoring</td><td class="num">€0–26</td><td class="num">€26</td><td class="num">€26–80</td></tr>
+    <tr><td>Off-provider backup copy</td><td class="num">€5–10</td><td class="num">€10–20</td><td class="num">€20–50</td></tr>
+    <tr class="somma"><td>Total per month</td><td class="num">€50–100</td><td class="num">€100–230</td><td class="num">€230–500</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:42%">Other costs</th><th>Amount</th></tr></thead>
+  <tbody>
+    <tr><td>Domain</td><td>€15–30 per year, if the studio does not have one</td></tr>
+    <tr><td>Stripe, on what is sold</td><td>about 1.5% + €0.25 per European card payment; about 0.7% more on memberships</td></tr>
+    <tr><td>Support and maintenance</td><td>monthly packages from €480 (§&nbsp;10)</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="nota">Indicative, on price lists of September 2026, net of VAT, dollar at par. On €6,000 of monthly sales Stripe costs about €120: less than two no-shows a week.</p>
+
+<h2 id="timeline">8 · Timeline</h2>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:42%">Phase</th><th style="width:26%">Weeks from kick-off</th><th>Duration</th></tr></thead>
+  <tbody>
+    <tr class="sez"><td colspan="3">A · Launch</td></tr>
+    <tr><td>Kick-off workshop, rules, prototype</td><td>1–2</td><td>2 weeks</td></tr>
+    <tr><td>Development, demo every Friday</td><td>2–6</td><td>5 weeks, overlapping</td></tr>
+    <tr><td>Acceptance testing with the front desk, go-live</td><td>6–7</td><td>2 weeks</td></tr>
+    <tr class="somma"><td>Launch live</td><td>week 7</td><td>about 6 weeks of work</td></tr>
+    <tr class="sez"><td colspan="3">B · Memberships</td></tr>
+    <tr><td>Development</td><td>8–10</td><td>3 weeks</td></tr>
+    <tr><td>Testing and release</td><td>10–11</td><td>1 week</td></tr>
+    <tr class="somma"><td>Memberships live</td><td>week 11</td><td>before the January rush with a September kick-off</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="nota">Dates start from signature and delivery of the client's materials (photos, class descriptions, prices, Stripe account). The contract states a maximum response time (five working days), beyond which dates move.</p>
+
+<h2 id="team">9 · The team</h2>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:32%">Role</th><th>What they do</th><th style="width:22%">Commitment</th></tr></thead>
+  <tbody>
+    <tr><td>Senior full-stack developer · project lead</td><td>Analysis, database and booking rules, Stripe, security; the studio's single contact</td><td>whole project</td></tr>
+    <tr><td>Senior full-stack developer</td><td>Website, member area, instructor view, admin panel, emails</td><td>whole project</td></tr>
+    <tr><td>UX/UI designer</td><td>Mobile-first flows, prototype, design system</td><td>first two weeks, then on call</td></tr>
+    <tr><td>Tester</td><td>Acceptance testing with the front desk before each release</td><td>before releases</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="nota">A small senior team using AI-assisted development tools: that is what keeps the days low compared with a traditional agency.</p>
+
+<h2 id="support">10 · Support after launch</h2>
+<ul>
+  <li><b>Warranty: three months after each release</b>, included. It covers defects in what was delivered against what was agreed; not new requests.</li>
+  <li><b>Routine maintenance</b>: library and system updates, Stripe and email changes, backup checks, monitoring.</li>
+  <li><b>Evolutionary maintenance</b>: new features and changes, from the package hours or by the day.</li>
+</ul>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:24%">Package</th><th class="num" style="width:14%">Hours per month</th><th class="num" style="width:16%">Fee</th><th>What is included</th></tr></thead>
+  <tbody>
+    <tr><td>Essential</td><td class="num">8</td><td class="num">€480</td><td>Routine maintenance, bug fixing, monitoring, email support</td></tr>
+    <tr><td>Standard</td><td class="num">20</td><td class="num">€1,100</td><td>As above, plus small improvements and a phone contact</td></tr>
+    <tr><td>Evolution</td><td class="num">40</td><td class="num">€2,000</td><td>As above, plus continuous development and a monthly planning meeting</td></tr>
+    <tr><td>Out of package</td><td class="num">—</td><td class="num"><span data-est="hourly">€60</span> per hour<br><span data-est="rate">€400</span> per day</td><td>Hours beyond the package; +30% out of hours or on public holidays</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:24%">Severity</th><th>Example</th><th style="width:20%">Taken in</th><th style="width:20%">Solved or worked around</th></tr></thead>
+  <tbody>
+    <tr><td>Blocking</td><td>Nobody can book or pay</td><td>4 working hours</td><td>1 working day</td></tr>
+    <tr><td>Severe</td><td>Reminders not sent</td><td>1 working day</td><td>3 working days</td></tr>
+    <tr><td>Normal</td><td>A defect with a workaround</td><td>2 working days</td><td>next release</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="nota">Service hours: Monday–Friday, 9–18. Unused hours roll over to the next month, not beyond. For a studio of this size the <b>Essential</b> package is enough after launch.</p>
+
+<h2 id="ownership">11 · Ownership</h2>
+<ul>
+  <li><b>To the client, on payment of each phase</b>: source code, repository, database and schema, configuration, documentation, design assets.</li>
+  <li><b>Accounts in the studio's name from day one</b>: domain, Supabase, Vercel, Stripe, email, monitoring. The studio opens them — with our guidance — and invites us as administrators, and can remove us at any time without losing anything.</li>
+  <li><b>Third-party libraries and services</b> stay under their own licences: we list them in an annex, with licence and cost.</li>
+  <li><b>Free exit</b>: at the end we hand over access, deployment and restore documentation, and one day of handover to whoever takes over.</li>
+</ul>
+
+<h2 id="open">12 · Assumptions, exclusions, open points</h2>
+<h3>To clarify at the meeting</h3>
+<div class="tabella">
+<table>
+  <thead><tr><th style="width:30%">Point</th><th>Why it matters</th></tr></thead>
+  <tbody>
+    <tr><td>Do class packs expire?</td><td>We assume packs of 5 expire after 2 months and packs of 10 after 4. No expiry is simpler; expiry with extensions by the front desk is included.</td></tr>
+    <tr><td>Existing credits on the spreadsheet</td><td>We include a one-off import of members and remaining credits from a clean spreadsheet. Cleaning it is the studio's job.</td></tr>
+    <tr><td>Refunds</td><td>We assume refunds go back to the card through Stripe. Store credit instead of refunds is a setting, not extra work.</td></tr>
+    <tr><td>Memberships and waiting list fairness</td><td>Does a member with an unlimited membership take a waiting-list spot before a pack holder? We assume first come, first served.</td></tr>
+    <tr><td>VAT and invoices</td><td>Stripe receipts are included. If the studio needs tax invoices from its accounting software, that integration is not.</td></tr>
+  </tbody>
+</table>
+</div>
+<h3>Not included</h3>
+<ul>
+  <li>Third-party service costs (§&nbsp;7), accounts and licences: in the studio's name and paid by the studio.</li>
+  <li>Content: photos, class descriptions, instructor bios, translations.</li>
+  <li>Legal advice: privacy notice, terms and the cancellation policy text are written by the studio's lawyer; we provide the technical information.</li>
+  <li>Marketing, campaigns, user acquisition.</li>
+  <li>Native mobile app (§&nbsp;6).</li>
+</ul>
+
+<h2 id="sales">13 · Notes for the offer</h2>
+<ul>
+  <li><b>Rate</b>: <span data-est="rate">€400</span> per day. To change it, change it in <code>estimate/estimate.py</code> and regenerate this document.</li>
+  <li><b>Budget</b>: the client mentioned €20,000–30,000 for the first version. Launch alone is <b data-est="first">€27,200</b> and does everything that stops the no-shows; say it clearly in the offer.</li>
+  <li><b>Range</b>: <b data-est="range-min">€39,600</b> – <b data-est="range-max">€45,500</b> for both releases, with up to 15% risk margin.</li>
+  <li><b>One contract with two phases</b>: Launch is signed now, Memberships is confirmed after the first weeks of use, at the same rates.</li>
+  <li><b>Payment milestones</b>: 50% at kick-off and 50% at go-live of each phase.</li>
+</ul>
+
+</div>
+
+<footer class="wrap">
+  <p>Example Studio · internal estimate for Riverside Yoga, 7 September 2026. Amounts are generated by <code>docs/estimate/estimate.py</code>: do not edit them by hand here.</p>
+</footer>
+<script src="../assets/theme.js"></script>
+</body>
+</html>

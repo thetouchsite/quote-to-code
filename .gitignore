@@ -1,0 +1,10 @@
+# Your own data stays on your machine.
+company.json
+pricing.md
+requests/*
+!requests/.gitkeep
+
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
