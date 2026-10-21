@@ -1,5 +1,7 @@
 # quote-to-code
 
+![quote-to-code: dalla richiesta del cliente al software consegnato, e ritorno a stime migliori](docs/images/cover.png)
+
 **Dalla richiesta di preventivo del cliente al progetto consegnato, e ritorno a
 stime migliori.** Un insieme di skill per [Claude Code](https://claude.com/claude-code)
 e piccoli strumenti Python per software house e freelance.
